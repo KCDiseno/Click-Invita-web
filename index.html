@@ -1,0 +1,89 @@
+<!doctype html>
+
+
+<!-- PORTAFOLIO -->
+<section id="portafolio" class="section" aria-labelledby="portafolio-title">
+<h2 id="portafolio-title">Portafolio</h2>
+<div class="grid">
+<figure class="work">
+<img src="/assets/proyecto-1.webp" alt="Diseño tipográfico ‘Faith Over Fear’" width="600" height="600" loading="lazy" />
+<figcaption>Tipografía impactante para camiseta</figcaption>
+</figure>
+<figure class="work">
+<img src="/assets/proyecto-2.webp" alt="Diseño hiperrealista de mascota" width="600" height="600" loading="lazy" />
+<figcaption>Mascotas hiperrealistas</figcaption>
+</figure>
+<figure class="work">
+<img src="/assets/proyecto-3.webp" alt="Gráfico cultural de El Salvador" width="600" height="600" loading="lazy" />
+<figcaption>Cultura & países</figcaption>
+</figure>
+</div>
+</section>
+
+
+<!-- CONTACTO -->
+<section id="contacto" class="section" aria-labelledby="contacto-title">
+<h2 id="contacto-title">Contacto</h2>
+<form id="contactForm" class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+<!-- Honeypot anti‑spam -->
+<label class="hp" for="website">No completar este campo</label>
+<input class="hp" id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+
+
+<div class="field">
+<label for="nombre">Nombre *</label>
+<input id="nombre" name="nombre" type="text" required minlength="2" autocomplete="name" />
+<small class="error" aria-live="polite"></small>
+</div>
+
+
+<div class="field">
+<label for="email">Email *</label>
+<input id="email" name="email" type="email" required inputmode="email" autocomplete="email" />
+<small class="error" aria-live="polite"></small>
+</div>
+
+
+<div class="field">
+<label for="mensaje">Mensaje *</label>
+<textarea id="mensaje" name="mensaje" required minlength="10" rows="6"></textarea>
+<small class="error" aria-live="polite"></small>
+</div>
+
+
+<div class="field chk">
+<input id="acepto" name="acepto" type="checkbox" required />
+<label for="acepto">Acepto la <a href="#" rel="noopener">política de privacidad</a> *</label>
+</div>
+
+
+<button class="btn primary" type="submit">Enviar</button>
+<p id="formMsg" role="status" aria-live="polite"></p>
+</form>
+</section>
+</main>
+
+
+<footer class="footer">
+<small>© <span id="y"></span> KCDiseno · Todos los derechos reservados</small>
+<nav class="legal" aria-label="Legal">
+<a href="#">Privacidad</a>
+<a href="#">Términos</a>
+</nav>
+</footer>
+
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "KCDiseno",
+"url": "https://usuario.github.io/kcdiseno-web/",
+"logo": "https://usuario.github.io/kcdiseno-web/assets/logo.svg",
+"sameAs": ["https://www.instagram.com/", "https://www.facebook.com/"]
+}
+</script>
+<script src="/script.js" defer></script>
+</body>
+</html>
