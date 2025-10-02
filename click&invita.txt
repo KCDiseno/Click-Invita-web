@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Click & Invita · Tarjetas digitales editables</title>
+  <meta name="description" content="Crea invitaciones digitales en minutos. Elige un diseño, edítalo en Canva y compártelo. Categorías: Cumpleaños, Bodas y Baby Showers." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='80'>🎉</text></svg>">
+  <meta property="og:title" content="Click & Invita · Invitaciones digitales" />
+  <meta property="og:description" content="Elige · Edita en Canva · Envía. Cumpleaños · Bodas · Baby Showers." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://dummyimage.com/1200x630/00bfa6/ffffff.png&text=Click+%26+Invita" />
+  <meta name="theme-color" content="#00BFA6" />
+  <style>
+    :root {
+      --bg: #0b0f14; /* rich dark */
+      --card: #111827; /* slate-900 */
+      --muted: #94a3b8; /* slate-400 */
+      --text: #e5e7eb; /* gray-200 */
+      --brand: #00BFA6; /* turquesa */
+      --accent: #FF6F91; /* coral */
+      --gold: #FFD700; /* dorado */
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial; background: radial-gradient(1200px 600px at 80% -10%, rgba(255,111,145,0.15), transparent 60%), radial-gradient(1000px 500px at -10% 110%, rgba(0,191,166,0.18), transparent 60%), var(--bg); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px; border: 1px solid rgba(255,255,255,.06); background: rgba(17,24,39,.7); backdrop-filter: blur(8px); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,.45) inset, 0 10px 24px rgba(0,0,0,.2);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: linear-gradient(135deg, var(--brand), var(--accent)); box-shadow: 0 6px 16px rgba(0,0,0,.35); border: 2px solid rgba(255,255,255,.2); }
+    .logo span { font-size: 24px; }
+    .title { line-height: 1.1; font-weight: 800; letter-spacing: .2px; }
+    .subtitle { color: var(--muted); font-size: 13px; }
+
+    .controls { display: grid; grid-template-columns: 1fr auto; gap: 12px; margin: 18px 0 0; }
+    .search { width: 100%; border-radius: 12px; padding: 12px 14px; background: #0f172a; color: #e2e8f0; border: 1px solid rgba(148,163,184,.25); }
+    .share { border-radius: 12px; padding: 12px 14px; background: linear-gradient(135deg, rgba(0,191,166,.2), rgba(255,111,145,.2)); color: #fff; border: 1px solid rgba(255,255,255,.12); cursor: pointer; }
+
+    .tabs { display: flex; gap: 10px; flex-wrap: wrap; margin: 24px 0 6px; }
+    .tab { padding: 8px 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,.08); background: #0f172a; color: #e2e8f0; cursor: pointer; font-weight: 600; }
+    .tab.active { background: linear-gradient(135deg, var(--brand), var(--accent)); color: #081016; border-color: transparent; }
+
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); overflow: hidden; display: grid; grid-template-columns: 180px 1fr; min-height: 156px; box-shadow: 0 10px 26px rgba(0,0,0,.35); }
+    @media (min-width: 640px){ .card{ grid-column: span 6; } }
+    @media (min-width: 980px){ .card{ grid-column: span 4; } }
+    .thumb { position: relative; overflow: hidden; }
+    .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .badge { position: absolute; top: 8px; left: 8px; background: rgba(0,0,0,.55); color: #fff; padding: 6px 10px; border-radius: 999px; font-size: 12px; border: 1px solid rgba(255,255,255,.15); }
+    .body { padding: 14px 14px 12px; display: grid; gap: 8px; grid-template-rows: auto 1fr auto; }
+    .name { font-weight: 800; letter-spacing: .3px; }
+    .desc { color: var(--muted); font-size: 14px; line-height: 1.45; }
+    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .pill { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px dashed rgba(255,255,255,.12); color: #cbd5e1; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 12px; padding: 10px 12px; border: 1px solid rgba(255,255,255,.14); background: linear-gradient(135deg, rgba(0,191,166,.2), rgba(255,111,145,.2)); color: #fff; cursor: pointer; font-weight: 700; }
+    .btn.secondary { background: #0f172a; color: #e2e8f0; }
+
+    footer { margin: 30px 0 10px; text-align: center; color: #a3b2c6; font-size: 13px; }
+    .gold { color: var(--gold); }
+
+    .empty { opacity: .8; text-align: center; padding: 40px 10px; border: 1px dashed rgba(255,255,255,.12); border-radius: 16px; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Click & Invita",
+    "url": "https://kcdiseno.github.io/kcdiseno-web/",
+    "logo": "https://dummyimage.com/512x512/00bfa6/ffffff.png&text=C%26I",
+    "sameAs": [
+      "https://www.instagram.com/",
+      "https://www.facebook.com/",
+      "https://www.tiktok.com/"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>✉️</span></div>
+        <div>
+          <div class="title">Click <span class="gold">&</span> Invita</div>
+          <div class="subtitle">Elige · Edita en Canva · Envía — Cumpleaños · Bodas · Baby Showers</div>
+        </div>
+      </div>
+      <div class="cta">
+        <button id="shareApp" class="share" title="Compartir">Compartir</button>
+      </div>
+    </header>
+
+    <div class="controls">
+      <input id="search" class="search" type="search" placeholder="Buscar: unicornio, minimalista, dorado, floral…" aria-label="Buscar plantillas" />
+      <div class="tabs" role="tablist" aria-label="Categorías">
+        <button class="tab active" data-cat="cumple">Cumpleaños</button>
+        <button class="tab" data-cat="bodas">Bodas</button>
+        <button class="tab" data-cat="baby">Baby Showers</button>
+      </div>
+    </div>
+
+    <section id="grid" class="grid" aria-live="polite"></section>
+
+    <div id="emptyState" class="empty" hidden>
+      No hay resultados. Prueba con otras palabras clave.
+    </div>
+
+    <footer>
+      © <span id="year"></span> Click & Invita · Hecho con ♥ para crear invitaciones hermosas en minutos.
+    </footer>
+  </div>
+
+  <script>
+    // ——— CONFIGURA AQUÍ TUS PLANTILLAS ———
+    // Reemplaza los "canva.com/plantilla-demo" por tus enlaces reales de Canva (usar enlaces de plantilla para usar modelo)
+    // Consejo: añade ?utm_source={red}&utm_medium=social&utm_campaign=click_invita para medir tráfico.
+    const TEMPLATES = [
+      // Cumpleaños
+      { id: 'c1', cat: 'cumple', name: 'Cumple Unicornio Pastel', tags: ['unicornio','pastel','niña','arcoíris'],
+        img: 'https://images.unsplash.com/photo-1542359649-31e03cd4d909?q=80&w=800&auto=format&fit=crop',
+        desc: 'Fondo pastel, tipografía dulce, destellos dorados sutiles, 1080×1920.',
+        url: 'https://www.canva.com/plantilla-demo?design=cumple-unicornio' },
+      { id: 'c2', cat: 'cumple', name: 'Cumple Gamer Neón', tags: ['gamer','neón','niño','control'],
+        img: 'https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=800&auto=format&fit=crop',
+        desc: 'Paleta neón, botones retro, encuadre vertical para stories.',
+        url: 'https://www.canva.com/plantilla-demo?design=cumple-gamer' },
+      { id: 'c3', cat: 'cumple', name: 'Cumple Floral Minimal', tags: ['floral','minimal','adulto','elegante'],
+        img: 'https://images.unsplash.com/photo-1529634899498-fd1b3f1c0f1b?q=80&w=800&auto=format&fit=crop',
+        desc: 'Flores line art, serif elegante, dorado metálico sutil.',
+        url: 'https://www.canva.com/plantilla-demo?design=cumple-floral' },
+
+      // Bodas
+      { id: 'b1', cat: 'bodas', name: 'Boda Clásica Dorada', tags: ['boda','dorado','clásico','premium'],
+        img: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=800&auto=format&fit=crop',
+        desc: 'Tipografía caligráfica, textura dorada, invitación y save‑the‑date.',
+        url: 'https://www.canva.com/plantilla-demo?design=boda-dorada' },
+      { id: 'b2', cat: 'bodas', name: 'Boda Acuarela Verde', tags: ['acuarela','botánico','verde','moderno'],
+        img: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop',
+        desc: 'Acuarelas botánicas, serif + sans, versión vertical y cuadrada.',
+        url: 'https://www.canva.com/plantilla-demo?design=boda-verde' },
+      { id: 'b3', cat: 'bodas', name: 'Boda Minimal Tipográfica', tags: ['tipografía','blanco y negro','elegante'],
+        img: 'https://images.unsplash.com/photo-1459400415110-2b3985f06b2b?q=80&w=800&auto=format&fit=crop',
+        desc: 'Negro sobre blanco, jerarquía tipográfica impecable.',
+        url: 'https://www.canva.com/plantilla-demo?design=boda-minimal' },
+
+      // Baby Showers
+      { id: 's1', cat: 'baby', name: 'Baby Shower Nubes Suaves', tags: ['baby','nubes','celeste','ternura'],
+        img: 'https://images.unsplash.com/photo-1520848315518-b991dd16a882?q=80&w=800&auto=format&fit=crop',
+        desc: 'Ilustraciones suaves, paleta celeste/crema, tipografía redondeada.',
+        url: 'https://www.canva.com/plantilla-demo?design=baby-nubes' },
+      { id: 's2', cat: 'baby', name: 'Baby Shower Safari', tags: ['safari','animalitos','verde','beige'],
+        img: 'https://images.unsplash.com/photo-1530089711124-4c8b5433a3a7?q=80&w=800&auto=format&fit=crop',
+        desc: 'Animalitos tiernos, texturas papel, marco orgánico.',
+        url: 'https://www.canva.com/plantilla-demo?design=baby-safari' },
+      { id: 's3', cat: 'baby', name: 'Gender Reveal Neón', tags: ['gender reveal','neón','rosa','azul'],
+        img: 'https://images.unsplash.com/photo-1504198458649-3128b932f49b?q=80&w=800&auto=format&fit=crop',
+        desc: 'Neón rosa/azul, efecto brillo, animable en video.',
+        url: 'https://www.canva.com/plantilla-demo?design=baby-neon' }
+    ];
+
+    // ——— LÓGICA UI ———
+    const grid = document.getElementById('grid');
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    const search = document.getElementById('search');
+    const empty = document.getElementById('emptyState');
+    const year = document.getElementById('year');
+    year.textContent = new Date().getFullYear();
+
+    let state = { cat: 'cumple', q: '' };
+
+    function detectSource() {
+      const url = new URL(location.href);
+      const src = url.searchParams.get('src');
+      if (src) return src; // ?src=facebook | instagram | tiktok | yt
+      const ua = navigator.userAgent.toLowerCase();
+      if (ua.includes('instagram')) return 'instagram';
+      if (ua.includes('tiktok')) return 'tiktok';
+      if (ua.includes('fb')) return 'facebook';
+      return 'direct';
+    }
+
+    function withUTM(href) {
+      const url = new URL(href);
+      const src = detectSource();
+      url.searchParams.set('utm_source', src);
+      url.searchParams.set('utm_medium', 'social');
+      url.searchParams.set('utm_campaign', 'click_invita');
+      return url.toString();
+    }
+
+    function card(t) {
+      return `
+        <article class="card" data-name="${t.name.toLowerCase()}" data-tags="${t.tags.join(',').toLowerCase()}">
+          <div class="thumb">
+            <img loading="lazy" src="${t.img}" alt="${t.name}"/>
+            <span class="badge">${label(t.cat)}</span>
+          </div>
+          <div class="body">
+            <div class="name">${t.name}</div>
+            <div class="desc">${t.desc}</div>
+            <div class="row">
+              ${t.tags.map(x=>`<span class="pill">#${x}</span>`).join('')}
+            </div>
+            <div class="row">
+              <a class="btn" href="${withUTM(t.url)}" target="_blank" rel="noopener" aria-label="Editar en Canva: ${t.name}">✏️ Editar en Canva</a>
+              <button class="btn secondary" data-copy="${withUTM(t.url)}" aria-label="Copiar enlace">🔗 Copiar enlace</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function label(cat){
+      return cat==='cumple'?'Cumpleaños':cat==='bodas'?'Bodas':'Baby Shower';
+    }
+
+    function render(){
+      const q = state.q.trim().toLowerCase();
+      const data = TEMPLATES.filter(t => t.cat===state.cat).filter(t => {
+        if (!q) return true;
+        return t.name.toLowerCase().includes(q) || t.tags.join(',').toLowerCase().includes(q) || t.desc.toLowerCase().includes(q);
+      });
+      grid.innerHTML = data.map(card).join('');
+      empty.hidden = data.length !== 0;
+      attachCopyHandlers();
+    }
+
+    function attachCopyHandlers(){
+      grid.querySelectorAll('[data-copy]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const link = btn.getAttribute('data-copy');
+          try { await navigator.clipboard.writeText(link); btn.textContent = '✅ Copiado'; setTimeout(()=>btn.textContent='🔗 Copiar enlace', 1200);} catch(e){ alert('Copia manual: '+link); }
+        });
+      });
+    }
+
+    tabs.forEach(tb => tb.addEventListener('click', ev => {
+      tabs.forEach(t=>t.classList.remove('active'));
+      ev.currentTarget.classList.add('active');
+      state.cat = ev.currentTarget.dataset.cat;
+      render();
+    }));
+
+    search.addEventListener('input', ev => { state.q = ev.target.value; render(); });
+
+    // Web Share API
+    document.getElementById('shareApp').addEventListener('click', async () => {
+      const shareData = { title: 'Click & Invita', text: 'Crea invitaciones digitales en minutos', url: location.href };
+      if (navigator.share) { try { await navigator.share(shareData); } catch(e){} }
+      else { navigator.clipboard?.writeText(location.href); alert('Enlace copiado'); }
+    });
+
+    // Inicio
+    render();
+  </script>
+</body>
+</html>
