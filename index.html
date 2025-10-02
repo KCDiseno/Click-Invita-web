@@ -1,83 +1,167 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>KCDiseno – Galería de Diseños</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Galería de diseños para camisetas. Compra en Spreadshirt o Redbubble.">
-  <link rel="icon" href="img/favicon.png">
-  <meta property="og:title" content="KCDiseno – Diseños">
-  <meta property="og:description" content="Haz clic y compra en Spreadshirt o Redbubble.">
-  <meta property="og:image" content="https://tuusuario.github.io/img/og.jpg">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Click &amp; Invita — Diseña, comparte y celebra</title>
+  <meta name="description" content="Click &amp; Invita: plantillas de invitaciones digitales listas para editar en Canva. Cumpleaños, Bodas y Baby Showers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --turquesa:#00BFA6; /* guía de marca */
+      --coral:#FF6F91;    /* guía de marca */
+      --dorado:#FFD700;   /* guía de marca */
+      --ink:#1F2937;      /* gris-azul para textos */
+      --bg:#F8FAFC;       /* fondo claro */
+      --card:#FFFFFF;     /* tarjetas */
+      --muted:#6B7280;    /* textos secundarios */
+      --radius:18px;
+      --shadow:0 10px 30px rgba(31,41,55,.08);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;color:var(--ink);background:var(--bg);}
+    .container{max-width:1100px;margin-inline:auto;padding:24px}
+    header{position:sticky;top:0;background:linear-gradient(90deg,var(--turquesa),var(--coral));color:#fff;box-shadow:var(--shadow);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.3px}
+    .brand-logo{width:36px;height:36px;border-radius:10px;background:conic-gradient(from 210deg at 50% 50%, var(--dorado), var(--turquesa), var(--coral), var(--dorado));box-shadow:inset 0 0 0 2px rgba(255,255,255,.65);}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:0;cursor:pointer;font-weight:600;text-decoration:none}
+    .btn-primary{background:#fff;color:#0f172a;box-shadow:var(--shadow)}
+    .btn-outline{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.8)}
+
+    .hero{position:relative;isolation:isolate;padding:64px 24px;background:
+      radial-gradient(1200px 400px at 20% -20%, rgba(255,255,255,.35), transparent),
+      radial-gradient(1200px 400px at 80% -20%, rgba(255,255,255,.25), transparent),
+      linear-gradient(90deg, var(--turquesa), var(--coral));
+      color:#fff;}
+    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
+    @media (max-width:900px){.hero-inner{grid-template-columns:1fr}}
+    h1{font-size: clamp(28px, 4vw, 46px); margin: 6px 0 12px 0; line-height:1.1}
+    .lead{font-size: clamp(14px,1.5vw,18px);opacity:.95;max-width:60ch}
+    .hero-card{background:rgba(255,255,255,.14);backdrop-filter: blur(8px);border:1px solid rgba(255,255,255,.35);padding:18px;border-radius: var(--radius)}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:36px 0}
+    @media (max-width:900px){.cards{grid-template-columns:1fr}}
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600;color:#0f172a;background:linear-gradient(90deg,#fff, #fff) padding-box, linear-gradient(90deg,var(--turquesa),var(--coral)) border-box;border:2px solid transparent;}
+    .title{font-size:20px;margin:10px 0 8px}
+    .muted{color:var(--muted);font-size:14px}
+    .spacer{height:10px}
+    .actions{display:flex;gap:10px;margin-top:auto;flex-wrap:wrap}
+
+    .cta{border-radius:var(--radius);padding:24px;background:linear-gradient(90deg, #fff, #fff) padding-box, linear-gradient(90deg, var(--turquesa), var(--coral)) border-box;border:2px solid transparent;box-shadow:var(--shadow)}
+    footer{padding:28px 24px;color:#475569}
+    footer small a{color:inherit}
+    .ico{font-size:22px}
+  </style>
 </head>
 <body>
-  <header class="wrap">
-    <h1>KCDiseno</h1>
-    <nav>
-      <a href="#galeria">Diseños</a>
-      <a href="#sobre">Sobre mí</a>
-      <a href="#contacto">Contacto</a>
-    </nav><nav>
-  <a href="#galeria">Diseños</a>
-  <a href="#sobre">Sobre mí</a>
-  <a href="#contacto">Contacto</a>
-</nav>
-
+  <header>
+    <div class="nav container">
+      <div class="brand" aria-label="Click &amp; Invita">
+        <div class="brand-logo" aria-hidden="true"></div>
+        <span>Click &amp; Invita</span>
+      </div>
+      <nav>
+        <a class="btn btn-outline" href="#como-funciona">Cómo funciona</a>
+        <a class="btn btn-primary" href="https://www.canva.com/" target="_blank" rel="noopener">Editar en Canva</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h2>Diseños listos para tu camiseta</h2>
-<p>Este sitio es solo de referencia. La compra se realiza en tiendas externas.</p>
-<a class="btn" href="#galeria">Ver diseños</a>
-<a class="btn outline" target="_blank" rel="noopener"
-   href="https://tu-spreadshirt.com/?utm_source=website&utm_medium=referral&utm_campaign=kcdiseno">
-   Ir a Spreadshirt
-</a>
-
-      <h2>Diseños listos para tu camiseta</h2>
-      <p>Este sitio es solo de referencia. La compra se realiza en tiendas externas.</p>
-      <div class="cta">
-        <a class="btn" href="#galeria">Ver diseños</a>
-        <a class="btn outline" target="_blank" rel="noopener" href="https://tu-spreadshirt.com/?utm_source=website&utm_medium=referral&utm_campaign=kcdiseno">Ir a Spreadshirt</a>
+  <section class="hero" id="inicio">
+    <div class="container hero-inner">
+      <div>
+        <h1>Invitaciones digitales listas para personalizar</h1>
+        <p class="lead">Crea invitaciones elegantes en minutos. Elige una categoría, edita en Canva y comparte por WhatsApp, Instagram o email. Ideal para <strong>Fiestas de Cumpleaños</strong>, <strong>Bodas</strong> y <strong>Baby Showers</strong>.</p>
+        <div class="spacer"></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="#categorias">Explorar categorías</a>
+          <a class="btn btn-outline" href="#como-funciona">Ver guía rápida</a>
+        </div>
       </div>
-    </section>
-
-    <section id="galeria">
-      <h3>Galería</h3>
-      <div class="grid">
-        <!-- TARJETA DE EJEMPLO -->
-        <article class="card">
-          <img src="img/diseno-1.png" alt="Diseño 1">
-          <h4>Faith Over Fear</h4>
-          <div class="buttons">
-            <a target="_blank" rel="noopener" class="btn"
-               href="https://spreadshirt.com/tu-producto?utm_source=website&utm_medium=referral&utm_campaign=kcdiseno">Comprar en Spreadshirt</a>
-            <a target="_blank" rel="noopener" class="btn outline"
-               href="https://www.redbubble.com/tu-producto?utm_source=website&utm_medium=referral&utm_campaign=kcdiseno">Comprar en Redbubble</a>
-          </div>
-        </article>
-        <!-- Duplica <article> por cada diseño -->
+      <div class="hero-card" role="img" aria-label="Sobre de invitación con destellos, estilo premium">
+        <svg viewBox="0 0 400 260" width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <linearGradient id="grad1" x1="0" x2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity=".85"/>
+              <stop offset="100%" stop-color="#fff6" stop-opacity=".6"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="400" height="260" rx="16" fill="url(#grad1)"/>
+          <g>
+            <rect x="60" y="60" width="280" height="140" rx="10" fill="#fff" stroke="#E5E7EB"/>
+            <path d="M60 90 L200 160 L340 90" fill="#FFB6C1" opacity=".4"/>
+            <circle cx="200" cy="130" r="3" fill="#FFD700"/>
+            <g fill="#FFD700" opacity=".7">
+              <circle cx="300" cy="70" r="2"/><circle cx="90" cy="190" r="2"/>
+              <circle cx="330" cy="200" r="1.5"/><circle cx="70" cy="70" r="1.5"/>
+            </g>
+          </g>
+        </svg>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="sobre">
-      <h3>Sobre mí</h3>
-      <p>Diseñador gráfico. Este sitio solo muestra imágenes de referencia; pagos y envíos se gestionan en Spreadshirt/Redbubble.</p>
-    </section>
+  <main class="container" id="categorias">
+    <div class="cards" aria-label="Categorías de plantillas">
+      <!-- CUMPLEAÑOS -->
+      <article class="card">
+        <span class="chip"><span class="ico">🎈</span> Fiestas de Cumpleaños</span>
+        <h2 class="title">Cumpleaños</h2>
+        <p class="muted">Plantillas vibrantes y festivas para todas las edades. Ideal para compartir en Instagram, WhatsApp y TikTok.</p>
+        <div class="spacer"></div>
+        <div class="actions">
+          <!-- Reemplaza los enlaces a Canva con tus URLs de plantilla -->
+          <a class="btn btn-primary" href="https://www.canva.com/" target="_blank" rel="noopener">Editar en Canva</a>
+          <a class="btn" style="background:linear-gradient(90deg,var(--turquesa),var(--coral));color:#fff" href="#cumpleanos">Ver ejemplos</a>
+        </div>
+      </article>
 
-    <section id="contacto">
-      <h3>Contacto</h3>
-      <p>Escríbeme: <a href="mailto:tuemail@dominio.com">tuemail@dominio.com</a></p>
-    </section>
+      <!-- BODAS -->
+      <article class="card">
+        <span class="chip"><span class="ico">💍</span> Bodas</span>
+        <h2 class="title">Bodas</h2>
+        <p class="muted">Diseños elegantes con toques dorados y tipografía romántica. Incluye portada, detalles y confirmación.</p>
+        <div class="spacer"></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.canva.com/" target="_blank" rel="noopener">Editar en Canva</a>
+          <a class="btn" style="background:linear-gradient(90deg,var(--turquesa),var(--coral));color:#fff" href="#bodas">Ver ejemplos</a>
+        </div>
+      </article>
 
-    <section id="aviso">
-      <h3>Aviso</h3>
-      <p>Compras, pagos, envíos y devoluciones se gestionan íntegramente en las tiendas enlazadas.</p>
+      <!-- BABY SHOWERS -->
+      <article class="card">
+        <span class="chip"><span class="ico">🍼</span> Baby Showers</span>
+        <h2 class="title">Baby Showers</h2>
+        <p class="muted">Paletas suaves, ilustraciones tiernas y espacio para detalles del evento. Perfecto para compartir por mensaje.</p>
+        <div class="spacer"></div>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://www.canva.com/" target="_blank" rel="noopener">Editar en Canva</a>
+          <a class="btn" style="background:linear-gradient(90deg,var(--turquesa),var(--coral));color:#fff" href="#baby">Ver ejemplos</a>
+        </div>
+      </article>
+    </div>
+
+    <section class="cta" id="como-funciona" aria-label="Cómo funciona">
+      <h3 style="margin:0 0 6px">¿Cómo funciona?</h3>
+      <ol style="margin:0;padding-left:18px;color:var(--muted)">
+        <li>Elige una categoría.</li>
+        <li>Haz clic en <em>Editar en Canva</em> y personaliza colores, textos y fotos.</li>
+        <li>Descarga o comparte el enlace: WhatsApp, Instagram, email.</li>
+      </ol>
     </section>
   </main>
 
-  <footer class="wrap"><small>© 2025 KCDiseno</small></footer>
+  <footer class="container">
+    <small>© <span id="y"></span> Click &amp; Invita · Hecho con ❤️ para celebrar momentos. · <a href="#">Aviso legal</a></small>
+  </footer>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
